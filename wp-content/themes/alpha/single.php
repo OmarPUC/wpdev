@@ -31,16 +31,21 @@
                             if(has_post_thumbnail()){
                                 the_post_thumbnail("large","class='img-fluid'");
                             }
+                        the_content();
                         ?>
                     </p>
                     <?php 
-                        the_content();
+                        next_post_link();
+                        echo "<br/>";
+                        previous_post_link();
                     ?>
                 </div>
-                <?php if(comments_open()): ?>
-                <div class="col-md-10 offset-md-1">
-                    <?php comments_template(); ?>
-                </div>
+
+                <?php 
+                    if(comments_open()): ?>
+                    <div class="col-md-10 offset-md-1">
+                        <?php comments_template(); ?>
+                    </div>
                 <?php endif; ?>
             </div>
 
