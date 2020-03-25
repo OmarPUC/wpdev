@@ -1,5 +1,6 @@
 <?php
 
-function change_case($text){
-    return strtoupper($text);
+function alpha_bootstrapping(){
+    load_theme_textdomain("alpha");
 }
+add_action("after_setup_theme","alpha_bootstrapping");
