@@ -59,6 +59,10 @@ h2.post-title {
     height: auto;
 }
 
+.post-pagination{
+    margin-bottom: 50px;
+}
+
 .footer{
     padding-bottom: 10px;
     padding-top: 10px;
