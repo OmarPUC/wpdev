@@ -41,7 +41,7 @@
                         <strong>
                             <?php the_author(); ?>
                         </strong><br/>
-                        <?php the_date(); ?>
+                        <?php echo get_the_date(); ?>
                     </p>
                     <?php echo get_the_tag_list("<ul class=\"list-unstyled\"><li>","</li><li>","</li></ul>"); ?>
                 </div>
