@@ -30,14 +30,12 @@
                 <div class="col-md-8">
                     <p>
                         <?php
-                            if(has_post_thumbnail()){
+                             if(has_post_thumbnail()){
                                 the_post_thumbnail("large","class='img-fluid'");
                             }
+                            the_excerpt(); 
                         ?>
                     </p>
-                    <?php 
-                        the_excerpt();
-                    ?>
                 </div>
             </div>
 
