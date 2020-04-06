@@ -27,8 +27,6 @@
                             <div class="col-md-10 offset-md-1">
                                 <p>
                                     <?php
-
-                                    //Featherlight does not work in gutenburg, see it later
                                         if(has_post_thumbnail()){
                                             $thumbnail_url = get_the_post_thumbnail_url(null,"large");
                                             // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
