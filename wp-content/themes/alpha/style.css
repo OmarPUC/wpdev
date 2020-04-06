@@ -20,9 +20,9 @@ h1.heading {
     border-bottom: 1px solid #ccc;
 }
 
-h3.tagline{
+h3.tagline {
     font-family: Arial;
-    margin:auto;
+    margin: auto;
     font-size: 18px;
     margin-top: 50px;
     margin-bottom: 15px;
@@ -38,7 +38,7 @@ h2.post-title {
     margin-bottom: 50px;
 }
 
-.post p{
+.post p {
     font-family: "Helvetica Neue";
     line-height: 1.7em;
     font-size: 18px;
@@ -50,33 +50,38 @@ h2.post-title {
 
 }
 
-.post:last-child .row:nth-child(2){
-    border-bottom:none;
+.post:last-child .row:nth-child(2) {
+    border-bottom: none;
 }
 
-.post p img{
+.post p img {
     max-width: 100%;
     height: auto;
 }
 
-.post-pagination{
+.post-pagination {
     margin-bottom: 50px;
 }
 
-.footer{
+.footer {
     padding-bottom: 10px;
     padding-top: 10px;
     background-color: #222;
-    color:#ccc;
+    color: #ccc;
 }
 
-.tags li{
+.tags li {
     color: #3D9970;
 }
 
-.page-header{
+.page-header {
     background-position: center;
     background-size: cover;
     margin-bottom: 30px;
     padding: 170px 0px;
+}
+
+.page-header h1.heading a{
+    color: #222;
+    text-decoration: none;
 }
