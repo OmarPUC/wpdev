@@ -20,6 +20,8 @@ function alpha_bootstrapping(){
     );
     add_theme_support("custom-header", $alpha_custom_header_details);
 
+    add_theme_support("custom-background");
+
     $alpha_custom_logo_defaults = array(
         'width' =>  '100',
         'height' =>  '100'
