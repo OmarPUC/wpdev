@@ -107,6 +107,12 @@ function alpha_menu_item_class($classes, $item){
 }
 add_filter("nav_menu_css_class","alpha_menu_item_class", 10, 2);
 
+// function alpha_highlight_search_results($text){
+//     if(is_search()){
+
+//     }
+// }
+
 
 function alpha_about_page_template_banner(){
     if(is_page()){
