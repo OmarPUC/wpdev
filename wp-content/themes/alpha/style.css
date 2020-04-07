@@ -82,10 +82,18 @@ h2.post-title {
 }
 
 .page-header h1.heading a{
-    color: #222;
+    color: #DD4545;
     text-decoration: none;
 }
 
 .menu-top-menu-container a{
     color: #222;
+}
+
+.header-logo {
+    margin-top: 50px;
+}
+
+.header-logo img{
+    border-radius: 50px;
 }

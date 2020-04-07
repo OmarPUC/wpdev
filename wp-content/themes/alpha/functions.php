@@ -15,6 +15,12 @@ function alpha_bootstrapping(){
         'default-text-color'    =>   '#222',
     );
     add_theme_support("custom-header", $alpha_custom_header_details);
+
+    $alpha_custom_logo_defaults = array(
+        'width' =>  '100',
+        'height' =>  '100'
+    );
+    add_theme_support("custom-logo", $alpha_custom_logo_defaults);
     add_theme_support("header-text");
     register_nav_menu("topmenu",__("Top Menu","alpha"));
     register_nav_menu("footermenu",__("Footer Menu","alpha"));
