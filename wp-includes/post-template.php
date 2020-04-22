@@ -922,7 +922,7 @@ function wp_link_pages( $args = '' ) {
 	global $page, $numpages, $multipage, $more;
 
 	$defaults = array(
-		'before'           => '<p class="post-nav-links">' . __( 'Pages:' ),
+		'before'           => '<p class="post-nav-links">' . __( 'Post Parts:' ),
 		'after'            => '</p>',
 		'link_before'      => '',
 		'link_after'       => '',
