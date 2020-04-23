@@ -6,12 +6,9 @@
         $alpha_text_class = "text-center";
     }
 ?>
-
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
-
     <?php get_template_part("/template-parts/common/hero"); ?>
-
     <div class="container">
         <div class="row">
             <div class="<?= $alpha_layout_class; ?>">
@@ -39,7 +36,6 @@
                                     <div class="col-md-12">
                                         <p>
                                             <?php
-
                                             //Featherlight does not work in gutenburg, see it later
                                             if (has_post_thumbnail()) {
                                                 $thumbnail_url = get_the_post_thumbnail_url(null, "large");
@@ -53,7 +49,6 @@
                                             ?>
                                         </p>
                                     </div>
-
                                     <div class="authorsection">
                                         <div class="row">
                                             <div class="col-md-2 authorimage">
@@ -72,7 +67,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <?php
                                     if (comments_open()) : ?>
                                         <div class="col-md-10 offset-md-1">
