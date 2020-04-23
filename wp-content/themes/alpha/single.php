@@ -35,19 +35,30 @@
                                         if(has_post_thumbnail()){
                                             $thumbnail_url = get_the_post_thumbnail_url(null,"large");
                                             // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
-                                            echo '<a class="popup" href="#" data-featherlight="image">';
+                                            printf( '<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url );
                                             the_post_thumbnail("large", array("class" => "img-fluid"));
                                             echo '</a>';
                                         }
                                     the_content();
-
                                     wp_link_pages();
-
-                                 /* next_post_link();
-                                    echo "<br/>";
-                                    previous_post_link();   */
                                     ?>
                                 </p>
+                            </div>
+
+                            <div class="authorsection">
+                                <div class="row">
+                                    <div class="col-md-3 authorimage">
+                                        <?= get_avatar(get_the_author_meta('id')); ?>
+                                    </div>
+                                    <div class="col-md-9 description">
+                                        <h4>
+                                            <?= get_the_author_meta('display_name'); ?>
+                                        </h4>
+                                        <p>
+                                            <?= get_the_author_meta('description'); ?>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <?php 
