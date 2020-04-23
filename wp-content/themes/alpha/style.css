@@ -104,6 +104,7 @@ h2.post-title {
 }
 
 .dashicons {
-    color: #DD4545;
+    color: rgb(117, 116, 116);
     font-size: 100px;
+    margin-bottom: 50px;
 }
