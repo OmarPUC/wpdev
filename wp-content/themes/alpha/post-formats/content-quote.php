@@ -22,7 +22,7 @@
                     <p>
                         <?php
                              if(has_post_thumbnail()){
-                                the_post_thumbnail("medium","class='img-fluid'");
+                                the_post_thumbnail("medium_large","class='img-fluid'");
                               }
                             the_excerpt(); 
                         ?>
