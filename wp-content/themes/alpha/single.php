@@ -7,7 +7,6 @@ if (!is_active_sidebar('sidebar-1')) {
 }
 ?>
 <?php get_header(); ?>
-
 <body <?php body_class(); ?>>
     <?php get_template_part("/template-parts/common/hero"); ?>
     <div class="container">
@@ -35,20 +34,37 @@ if (!is_active_sidebar('sidebar-1')) {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p>
+                                        <div class="slider">
                                             <?php
-                                            //Featherlight does not work in gutenburg, see it later
-                                            if (has_post_thumbnail()) {
-                                                $thumbnail_url = get_the_post_thumbnail_url(null, "large");
-                                                // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
-                                                printf('<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url);
-                                                the_post_thumbnail("large", array("class" => "img-fluid"));
-                                                echo '</a>';
+                                            if (class_exists('Attachments')) {
+                                                $attachments = new Attachments('slider');
+                                                if ($attachments->exist()) {
+                                                    while ($attachment = $attachments->get()) { ?>
+                                                        <div>
+                                                            <?php echo $attachments->image('medium_large'); ?>
+                                                        </div>
+                                            <?php
+                                                    }
+                                                }
                                             }
+                                            ?>
+                                        </div>
+                                        <div>
+                                        <?php
+                                            if ( !class_exists( 'Attachments' ) ) {
+                                                if ( has_post_thumbnail() ) {
+                                                    $thumbnail_url = get_the_post_thumbnail_url( null, "large" );
+                                                    printf( '<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url );
+                                                    the_post_thumbnail( "large", array( "class" => "img-fluid" ) );
+                                                    echo '</a>';
+                                                }
+                                            }
+
                                             the_content();
                                             wp_link_pages();
+
                                             ?>
-                                        </p>
+                                        </div>
                                     </div>
                                     <div class="authorsection">
                                         <div class="row">
