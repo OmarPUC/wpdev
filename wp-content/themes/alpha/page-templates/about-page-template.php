@@ -30,10 +30,11 @@ get_header();
                         <div class="row">
                             <div class="col-md-8 offset-md-2">
                                 <?php
-                                if (class_exists('Attachments')) {
+                                $attachments = new Attachments('testimonials');
+                                if (class_exists('Attachments') && $attachments->exist()) {
                                 ?>
-                                    <h2 class="text-center testimonial">
-                                        <!-- Translateable text -->
+                                    <h2 class="text-center">
+                                        <!-- Translateable text _e() -->
                                         <?php _e('Testimonials', 'alpha'); ?>
                                     </h2>
                                 <?php
@@ -42,7 +43,6 @@ get_header();
                                 <div class="testimonials slider text-center">
                                     <?php
                                     if (class_exists('Attachments')) {
-                                        $attachments = new Attachments('testimonials');
                                         if ($attachments->exist()) {
                                             while ($attachment = $attachments->get()) { ?>
                                                 <div>
@@ -64,21 +64,45 @@ get_header();
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-10 offset-md-1">
-                            <p>
+                        <?php
+                        if (class_exists('Attachments')) {
+                        ?>
+                            <div class="row">
                                 <?php
-                                if (!class_exists('Attachments')) {
-                                    if (has_post_thumbnail()) {
-                                        $thumbnail_url = get_the_post_thumbnail_url(null, "large");
-                                        printf('<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url);
-                                        the_post_thumbnail("large", array("class" => "img-fluid"));
-                                        echo '</a>';
+                                $attachments = new Attachments('team');
+                                if ($attachments->exist()) {
+                                    while ($attachment = $attachments->get()) { ?>
+                                        <div class="col-md-4">
+                                            <?php echo $attachments->image('medium'); ?>
+                                            <h4><?php echo esc_html($attachments->field('name')); ?></h4>
+                                            <p>
+                                                <?php echo esc_html($attachments->field('position')) . ','; ?>
+                                                <strong>
+                                                    <?php echo esc_html($attachments->field('company')); ?>
+                                                </strong>
+                                            </p>
+                                            <p><?php echo esc_html($attachments->field('bio')); ?></p>
+                                            <p><em><?php echo esc_html($attachments->field('email')); ?></em></p>
+                                        </div>
+                            <?php
                                     }
-                                    the_content();
                                 }
-                                ?>
-                            </p>
-                        </div>
+                            }
+                            ?>
+                            </div>
+                            <div class="col-md-10 offset-md-1">
+                                <p>
+                                    <?php
+                                        if (has_post_thumbnail()) {
+                                            $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                            printf('<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url);
+                                            // the_post_thumbnail("large", array("class" => "img-fluid"));
+                                            echo '</a>';
+                                        }
+                                        the_content();
+                                    ?>
+                                </p>
+                            </div>
                     </div>
                 </div>
             </div>

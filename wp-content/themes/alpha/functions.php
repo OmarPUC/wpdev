@@ -3,7 +3,7 @@ if ( class_exists( 'Attachments' ) ) {
     require_once "lib/attachments.php";
 }
 
-if ( site_url() == "http://demo.lwhh.com" ) {
+if ( site_url() == "http://localhost/wpdesign" ) {
     define( "VERSION", time() );
 } else {
     define( "VERSION", wp_get_theme()->get( "Version" ) );
