@@ -135,3 +135,8 @@ h2.post-title {
     background-color: #ff0;
     font-weight: bold;
 }
+
+.search-form {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}

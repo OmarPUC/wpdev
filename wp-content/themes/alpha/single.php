@@ -59,6 +59,11 @@ if (!is_active_sidebar('sidebar-1')) {
                                                 echo '</a>';
                                             }
 
+                                            // the_post_thumbnail('alpha-square');
+                                            // the_post_thumbnail('alpha-square-new1');
+                                            // the_post_thumbnail('alpha-square-new2');
+                                            // the_post_thumbnail('alpha-square-new3');
+
                                             the_content();
                                             wp_link_pages();
 
