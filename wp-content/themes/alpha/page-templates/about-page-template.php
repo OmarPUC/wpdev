@@ -20,10 +20,12 @@ get_header();
                             <h2 class="post-title text-center">
                                 <?php the_title(); ?>
                             </h2>
-                            <p class="text-center">
-                                <em><?php the_author(); ?></em><br />
-                                <?php echo get_the_date(); ?>
-                            </p>
+                            <!-- <p class="text-center">
+                                <strong> 
+                                the_author();
+                               </strong><br/>
+                                 echo get_the_date(); ?>
+                            </p> -->
                         </div>
                     </div>
                     <div class="row">
