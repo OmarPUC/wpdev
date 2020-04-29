@@ -185,9 +185,6 @@ if (!function_exists("alpha_about_page_template_banner")) {
     add_action("wp_head", "alpha_about_page_template_banner", 11);
 }
 
-
-
-
 function alpha_body_class($classes)
 {
     unset($classes[array_search("single-format-audio", $classes)]);
