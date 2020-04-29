@@ -35,21 +35,6 @@ if (!is_active_sidebar('sidebar-1')) {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="slider">
-                                            <?php
-                                            if (class_exists('Attachments')) {
-                                                $attachments = new Attachments('slider');
-                                                if ($attachments->exist()) {
-                                                    while ($attachment = $attachments->get()) { ?>
-                                                        <div>
-                                                            <?php echo $attachments->image('medium_large'); ?>
-                                                        </div>
-                                            <?php
-                                                    }
-                                                }
-                                            }
-                                            ?>
-                                        </div>
                                         <div>
                                             <?php
                                             if (has_post_thumbnail()) {

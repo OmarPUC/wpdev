@@ -3,7 +3,7 @@ Theme Name: Alpha
 Theme URI:
 Author: Omar Shrif Ansary
 Author URI:
-Description:    This is a basic WP Theme
+Description: This is a basic WP Theme
 Version:    1.0
 License:    GNU General Public License v2 or Later
 License URI:    https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -104,7 +104,7 @@ h2.post-title {
 }
 
 .dashicons {
-    color: rgb(117, 116, 116);
+    color: rgb(172, 170, 170);
     font-size: 100px;
     margin-bottom: 50px;
 }
@@ -121,6 +121,10 @@ h2.post-title {
 .authorpage {
     margin-bottom: 50px;
     text-align: left;
+}
+
+.testimonials {
+    background-color: lightgoldenrodyellow;
 }
 
 .testimonials img {

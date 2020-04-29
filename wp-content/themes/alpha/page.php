@@ -11,7 +11,7 @@
             <div class="post" <?php post_class(); ?>>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
                             <h2 class="post-title text-center">
                                 <?php the_title(); ?>
                             </h2>
@@ -24,7 +24,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="slider">
+                                <?php
+                                if (class_exists('Attachments')) {
+                                    $attachments = new Attachments('slider');
+                                    if ($attachments->exist()) {
+                                        while ($attachment = $attachments->get()) { ?>
+                                            <div>
+                                                <?php echo $attachments->image('large'); ?>
+                                            </div>
+                                <?php
+                                        }
+                                    }
+                                }
+                                ?>
+                            </div>
                             <p>
                                 <?php
                                 if (has_post_thumbnail()) {
