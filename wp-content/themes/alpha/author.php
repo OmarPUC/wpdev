@@ -9,7 +9,7 @@
             <div class="authorsection authorpage">
                 <div class="row">
                     <div class="col-md-2 authorimage">
-                        <?= get_avatar(get_the_author_meta('id')); ?>
+                        <?= get_avatar(get_the_author_meta('ID')); ?>
                     </div>
                     <div class="col-md-10">
                         <h6>
