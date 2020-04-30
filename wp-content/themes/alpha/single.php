@@ -58,7 +58,7 @@ if (!is_active_sidebar('sidebar-1')) {
                                     <div class="authorsection">
                                         <div class="row">
                                             <div class="col-md-2 authorimage">
-                                                <?= get_avatar(get_the_author_meta('id')); ?>
+                                                <?= get_avatar(get_the_author_meta('ID')); ?>
                                             </div>
                                             <div class="col-md-10">
                                                 <h6>
@@ -77,7 +77,7 @@ if (!is_active_sidebar('sidebar-1')) {
                                     <?php
                                     if (comments_open()) : ?>
                                         <div class="col-md-10 offset-md-1">
-                                            <!-- comments_template();  -->
+                                            <?php echo comments_template(); ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>
