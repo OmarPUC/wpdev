@@ -14,12 +14,24 @@
     <div class="posts text-center">
         <?php
         $paged              = get_query_var("paged") ? get_query_var("paged") : 1;
-        $posts_per_page     = 3;
+        $posts_per_page     = 5;
         $_p                 = new WP_Query(array(
             'posts_per_page'    => $posts_per_page,
-            'category_name'     => 'updated',
             'orderby'           => 'post__in',
             'paged'             => $paged,
+            'tax_query' => array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => array('updated'),
+                ),
+                array(
+                    'taxonomy' => 'post_tag',
+                    'field'    => 'slug',
+                    'terms'    => array('special'),
+                ),
+            ),
         ));
         while ($_p->have_posts()) {
             $_p->the_post();
