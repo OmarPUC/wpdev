@@ -22,17 +22,21 @@
             'tax_query' => array(
                 'relation' => 'OR',
                 array(
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'post_format',
                     'field'    => 'slug',
-                    'terms'    => array('updated'),
-                ),
-                array(
-                    'taxonomy' => 'post_tag',
-                    'field'    => 'slug',
-                    'terms'    => array('special'),
+                    'terms'    => array(
+                        'post-format-image',
+                        'post-format-video'
+                    ),
+                    'operator'  =>  'NOT IN',
                 ),
             ),
+            // 'post_status'   =>  'publish',
+            // 'has_password'  => true,
         ));
+        // $today = getdate();
+        // $_p = new WP_Query('year=' . $today['year'] . '&monthnum=' . $today['mon'] . '&day=' . $today['mday']);
+
         while ($_p->have_posts()) {
             $_p->the_post();
         ?>
