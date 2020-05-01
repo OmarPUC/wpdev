@@ -15,10 +15,9 @@
         <?php
         $paged              = get_query_var("paged") ? get_query_var("paged") : 1;
         $posts_per_page     = 3;
-        $posts_id           = array(193, 75, 195, 74, 69, 50, 56, 58, 60, 65, 62);
         $_p                 = new WP_Query(array(
             'posts_per_page'    => $posts_per_page,
-            'post__in'          => $posts_id,
+            'category_name'     => 'updated',
             'orderby'           => 'post__in',
             'paged'             => $paged,
         ));
@@ -32,9 +31,13 @@
         ?>
         <div class="container post-pagination">
             <div class="row">
-                <div class="col-md-4"> </div>
-                <div class="col-md-8">
-
+                <div class="col-md-12">
+                    <?php
+                    echo paginate_links(array(
+                        'total'     =>  $_p->max_num_pages,
+                        'current'   =>  $paged,
+                    ));
+                    ?>
                 </div>
             </div>
         </div>
