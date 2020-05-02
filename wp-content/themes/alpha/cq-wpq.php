@@ -19,21 +19,41 @@
             'posts_per_page'    => $posts_per_page,
             'orderby'           => 'post__in',
             'paged'             => $paged,
-            'tax_query' => array(
-                'relation' => 'OR',
+            'meta_query'        => array(
+                'relation'  =>  'AND',
                 array(
-                    'taxonomy' => 'post_format',
-                    'field'    => 'slug',
-                    'terms'    => array(
-                        'post-format-image',
-                        'post-format-video'
-                    ),
-                    'operator'  =>  'NOT IN',
+                    'key'       =>  'featured',
+                    'value'     =>  '1',
+                    'compare'   =>  '='
                 ),
+                array(
+                    'key'       =>  'homepage',
+                    'value'     =>  '1',
+                    'compare'   =>  '='
+                ),
+
             ),
+
+            // 'meta_key'          =>  'featured',
+            // 'meta_value'        =>  '1',
+
+            // 'tax_query' => array(
+            //     'relation' => 'OR',
+            //     array(
+            //         'taxonomy' => 'post_format',
+            //         'field'    => 'slug',
+            //         'terms'    => array(
+            //             'post-format-image',
+            //             'post-format-video'
+            //         ),
+            //         'operator'  =>  'NOT IN',
+            //     ),
+            // ),
+
             // 'post_status'   =>  'publish',
             // 'has_password'  => true,
         ));
+
         // $today = getdate();
         // $_p = new WP_Query('year=' . $today['year'] . '&monthnum=' . $today['mon'] . '&day=' . $today['mday']);
 
