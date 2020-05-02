@@ -220,7 +220,7 @@ if (!function_exists("alpha_todays_date")) {
 function alpha_highlight_search_results($text)
 {
     if (is_search()) {
-        $pattern = '/('. join('|', explode(' ', get_search_query())).')/i';
+        $pattern = '/(' . join('|', explode(' ', get_search_query())) . ')/i';
         $text = preg_replace($pattern, '<span class="search-highlight">\0</span>', $text);
     }
     return $text;
@@ -228,3 +228,11 @@ function alpha_highlight_search_results($text)
 add_filter('the_content', 'alpha_highlight_search_results');
 add_filter('the_excerpt', 'alpha_highlight_search_results');
 add_filter('the_title', 'alpha_highlight_search_results');
+
+function alpha_modify_main_query($wpq)
+{
+    if (is_home() && $wpq->is_main_query()) {
+        $wpq->set('category__not_in', array(1));
+    }
+}
+add_action('pre_get_posts', 'alpha_modify_main_query');
