@@ -37,21 +37,38 @@ if (!is_active_sidebar('sidebar-1')) {
                                     <div class="col-md-12">
                                         <div>
                                             <?php
-                                            if (has_post_thumbnail()) {
+                                            if (has_post_thumbnail()) :
                                                 $thumbnail_url = get_the_post_thumbnail_url(null, "large");
                                                 printf('<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url);
                                                 the_post_thumbnail("large", array("class" => "img-fluid"));
                                                 echo '</a>';
-                                            }
-
-                                            // the_post_thumbnail('alpha-square');
-                                            // the_post_thumbnail('alpha-square-new1');
-                                            // the_post_thumbnail('alpha-square-new2');
-                                            // the_post_thumbnail('alpha-square-new3');
-
+                                            endif;
                                             the_content();
-                                            wp_link_pages();
 
+                                            if (get_post_format() == 'image') :
+                                            ?>
+                                                <div class="metainfo">
+                                                    <strong>Camera Model:</strong>
+                                                    <?php
+                                                    $alpha_camera_model = get_field('camera_model');
+                                                    echo esc_html($alpha_camera_model);
+                                                    ?></br>
+                                                    <strong>Location:</strong>
+                                                    <?php
+                                                    $alpha_location = get_field('location');
+                                                    echo esc_html($alpha_location);
+                                                    ?></br>
+                                                    <strong>Date:</strong>
+                                                    <?php the_field('date'); ?></br>
+                                                    <?php
+                                                    if (get_field('licensed')) :
+                                                        echo apply_filters('the_content', get_field('license_information'));
+                                                    endif;
+                                                    ?>
+                                                </div>
+                                            <?php
+                                            endif;
+                                            wp_link_pages();
                                             ?>
                                         </div>
                                     </div>
