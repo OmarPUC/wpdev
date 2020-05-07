@@ -116,6 +116,14 @@ if (!is_active_sidebar('sidebar-1')) {
                                                 <p>
                                                     <strong>E-mail:</strong> <em><?= get_the_author_meta('user_email'); ?></em>
                                                 </p>
+                                                <p>
+                                                    <?php if (function_exists("the_field")) : ?>
+                                                        <p>
+                                                            Facebook URL: <?php the_field('facebook', 'user_' . get_the_author_meta('ID')) ?><br />
+                                                            Twitter URL: <?php the_field('twitter', 'user_' . get_the_author_meta('ID')) ?><br />
+                                                        </p>
+                                                    <?php endif; ?>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
