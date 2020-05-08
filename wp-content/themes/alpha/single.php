@@ -93,6 +93,25 @@ if (!is_active_sidebar('sidebar-1')) {
                                                         }
                                                         ?>
                                                     </p>
+                                                    <div>
+                                                        <h1><?php _e('Related Posts:', 'alpha'); ?></h1>
+                                                        <?php
+                                                        $related_posts = get_field('related_posts');
+                                                        $alpha_rp = new WP_Query(
+                                                            array(
+                                                                'post__in'   =>  $related_posts,
+                                                                'orderby'   =>  'post__in',
+                                                            ),
+                                                        );
+                                                        while ($alpha_rp->have_posts()) {
+                                                            $alpha_rp->the_post();
+                                                        ?>
+                                                        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                                        <?php
+                                                        }
+                                                        wp_reset_query();
+                                                        ?>
+                                                    </div>
                                                 </div>
                                             <?php
                                             endif;
@@ -119,8 +138,8 @@ if (!is_active_sidebar('sidebar-1')) {
                                                 <p>
                                                     <?php if (function_exists("the_field")) : ?>
                                                         <p>
-                                                            Facebook URL: <?php the_field('facebook', 'user_' . get_the_author_meta('ID')) ?><br />
-                                                            Twitter URL: <?php the_field('twitter', 'user_' . get_the_author_meta('ID')) ?><br />
+                                                            <strong>Facebook:</strong> <?php the_field('facebook', 'user_' . get_the_author_meta('ID')) ?><br />
+                                                            <strong>Twitter:</strong> <?php the_field('twitter', 'user_' . get_the_author_meta('ID')) ?><br />
                                                         </p>
                                                     <?php endif; ?>
                                                 </p>
