@@ -241,4 +241,5 @@ add_filter('the_title', 'alpha_highlight_search_results');
 // }
 // add_action('pre_get_posts', 'alpha_modify_main_query');
 
-add_filter('acf/settings/show_admin','__return_false');
+/* important 16.13 video */
+// add_filter('acf/settings/show_admin','__return_false');
