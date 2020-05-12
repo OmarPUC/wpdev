@@ -1,5 +1,6 @@
 <?php
 require_once(get_theme_file_path('/inc/tgm.php'));
+require_once(get_theme_file_path('/inc/attachments.php'));
 
 if (site_url() == "http://localhost/wpdesign") {
     define("VERSION", time());
@@ -48,9 +49,9 @@ function philosophy_pagination()
             'mid_size'  =>  3,
         )
     );
-    $links = str_replace('page-numbers','pgn__num',$links);
-    $links = str_replace("<ul class='pgn__num'>",'<ul>',$links);
-    $links = str_replace('next pgn__num','pgn__next',$links);
-    $links = str_replace('prev pgn__num','pgn__prev',$links);
+    $links = str_replace('page-numbers', 'pgn__num', $links);
+    $links = str_replace("<ul class='pgn__num'>", '<ul>', $links);
+    $links = str_replace('next pgn__num', 'pgn__next', $links);
+    $links = str_replace('prev pgn__num', 'pgn__prev', $links);
     echo $links;
 }
