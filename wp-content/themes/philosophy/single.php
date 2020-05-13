@@ -13,10 +13,10 @@ get_header();
                 <?php the_title(); ?>
             </h1>
             <ul class="s-content__header-meta">
-                <li class="date"><?php _e(the_date(), 'philosophy'); ?></li>
+                <li class="date"><?php the_date(); ?></li>
                 <li class="cat">
                     <?php _e('In', 'philosophy'); ?>
-                    <?php _e(get_the_category_list(' '), 'philosophy'); ?>
+                    <?php the_category(' '); ?>
                 </li>
             </ul>
         </div> <!-- end s-content__header -->
