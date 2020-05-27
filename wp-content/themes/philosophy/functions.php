@@ -19,6 +19,11 @@ function philosophy_theme_setup()
     add_editor_style('/assets/css/editor-style.css');
 
     register_nav_menu('topmenu', __('Top Menu', 'philosophy'));
+    register_nav_menus(array(
+        'footer-left'   =>  __('Footer Left Menu', 'philosophy'),
+        'footer-middle'   =>  __('Footer Middle Menu', 'philosophy'),
+        'footer-right'   =>  __('Footer Right Menu', 'philosophy'),
+    ));
     add_image_size('philosophy-home-square', 400, 400, true);
 }
 add_action('after_setup_theme', 'philosophy_theme_setup');
@@ -100,6 +105,26 @@ function philosophy_widgets()
         'after_widget'  => '</div>',
         'before_title'  => '<h3>',
         'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __('Footer Right', 'philosophy'),
+        'id'            => 'footer-right',
+        'description'   =>  __('Footer Right, Right Side', 'philosophy'),
+        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name'          => __('Footer Bottom', 'philosophy'),
+        'id'            => 'footer-bottom',
+        'description'   =>  __('Footer Bottom, Bottom Side', 'philosophy'),
+        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '',
+        'after_title'   => '',
     ));
 }
 add_action('widgets_init', 'philosophy_widgets');
