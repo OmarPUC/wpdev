@@ -10,3 +10,13 @@ License URI:    https://www.gnu.org/licenses/gpl-3.0.en.html
 Tags:   blogs, education
 Text Domain: philosophy
 */
+
+.header__logo h1{
+    margin: 0px;
+    font-weight: bold;
+}
+
+.header__logo h1 a{
+    color: #fff;
+    text-decoration: none;
+}

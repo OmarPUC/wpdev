@@ -1,17 +1,15 @@
 <?php
 
-class SocialIcons_Widget extends WP_Widget
-{
+class SocialIcons_Widget extends WP_Widget {
 
     /**
      * Register widget with WordPress.
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct(
             'tb_social_icons', // Base ID
-            __('Social Icons', 'philosophy'), // Name
-            array('description' => __('Social Icons', 'philosophy'),) // Args
+            __( 'Social Icons', 'philosophy' ), // Name
+            array( 'description' => __( 'Social Icons', 'philosophy' ), ) // Args
         );
     }
 
@@ -23,9 +21,8 @@ class SocialIcons_Widget extends WP_Widget
      * @param array $args Widget arguments.
      * @param array $instance Saved values from database.
      */
-    public function widget($args, $instance)
-    {
-        extract($args);
+    public function widget( $args, $instance ) {
+        extract( $args );
         $social_icons = array(
             "facebook",
             "twitter",
@@ -40,36 +37,35 @@ class SocialIcons_Widget extends WP_Widget
             "flickr",
             "behance"
         );
-        $title        = apply_filters('widget_title', $instance['title']);
+        $title        = apply_filters( 'widget_title', $instance['title'] );
 
-        echo $before_widget;
-?>
-        <ul class="about__social">
+        echo wp_kses_post($before_widget);
+        ?>
+        <ul class="<?php echo esc_attr($instance['classname']); ?>">
             <?php
-            if ($title) {
+            if ( $title ) {
                 echo "<div class=\"widget-title\">";
-                echo $before_title . esc_html($title) . $after_title;
+                echo wp_kses_post($before_title) . esc_html( $title ) . wp_kses_post($after_title);
                 echo "</div>";
             }
             ?>
-            <div class="social-link">
                 <?php
-                foreach ($social_icons as $sci) {
-                    $url = trim($instance[$sci]);
-                    if (!empty($url)) {
-                        if ($sci == "vimeo") {
+                foreach ( $social_icons as $sci ) {
+                    $url = trim( $instance[ $sci ] );
+                    if ( ! empty( $url ) ) {
+                        if ( $sci == "vimeo" ) {
                             $sci = "vimeo-square";
                         }
-                        $sci = esc_attr($sci);
-                        echo "<li><a target='_blank' href='" . esc_attr($url) . "'><i class='fa fa-" . esc_attr($sci) . "'></i></a></li>";
+                        $sci = esc_attr( $sci );
+                        echo "<li><a target='_blank' href='" . esc_attr( $url ) . "'><i class='fa fa-" . esc_attr( $sci ) . "'></i></a></li>";
                     }
                 }
                 ?>
 
-            </div>
         </ul>
-    <?php
-        echo $after_widget;
+        <?php
+        echo wp_kses_post($after_widget);
+
     }
 
     /**
@@ -82,22 +78,22 @@ class SocialIcons_Widget extends WP_Widget
      *
      * @return array Updated safe values to be saved.
      */
-    public function update($new_instance, $old_instance)
-    {
+    public function update( $new_instance, $old_instance ) {
         $instance                = array();
-        $instance['title']       = strip_tags($new_instance['title']);
-        $instance['facebook']    = strip_tags($new_instance['facebook']);
-        $instance['twitter']     = strip_tags($new_instance['twitter']);
-        $instance['github']      = strip_tags($new_instance['github']);
-        $instance['pinterest']   = strip_tags($new_instance['pinterest']);
-        $instance['instagram']   = strip_tags($new_instance['instagram']);
-        $instance['google-plus'] = strip_tags($new_instance['google-plus']);
-        $instance['youtube']     = strip_tags($new_instance['youtube']);
-        $instance['vimeo']       = strip_tags($new_instance['vimeo']);
-        $instance['tumblr']      = strip_tags($new_instance['tumblr']);
-        $instance['dribbble']    = strip_tags($new_instance['dribbble']);
-        $instance['flickr']      = strip_tags($new_instance['flickr']);
-        $instance['behance']     = strip_tags($new_instance['behance']);
+        $instance['title']       = strip_tags( $new_instance['title'] );
+        $instance['classname']       = strip_tags( $new_instance['classname'] );
+        $instance['facebook']    = strip_tags( $new_instance['facebook'] );
+        $instance['twitter']     = strip_tags( $new_instance['twitter'] );
+        $instance['github']      = strip_tags( $new_instance['github'] );
+        $instance['pinterest']   = strip_tags( $new_instance['pinterest'] );
+        $instance['instagram']   = strip_tags( $new_instance['instagram'] );
+        $instance['google-plus'] = strip_tags( $new_instance['google-plus'] );
+        $instance['youtube']     = strip_tags( $new_instance['youtube'] );
+        $instance['vimeo']       = strip_tags( $new_instance['vimeo'] );
+        $instance['tumblr']      = strip_tags( $new_instance['tumblr'] );
+        $instance['dribbble']    = strip_tags( $new_instance['dribbble'] );
+        $instance['flickr']      = strip_tags( $new_instance['flickr'] );
+        $instance['behance']     = strip_tags( $new_instance['behance'] );
 
         return $instance;
     }
@@ -109,12 +105,16 @@ class SocialIcons_Widget extends WP_Widget
      *
      * @param array $instance Previously saved values from database.
      */
-    public function form($instance)
-    {
-        if (isset($instance['title'])) {
+    public function form( $instance ) {
+        if ( isset( $instance['title'] ) ) {
             $title = $instance['title'];
         } else {
-            $title = __('Social Icons', 'philosophy');
+            $title = __( 'Social Icons', 'philosophy' );
+        }
+
+        $classname = '';
+        if ( isset( $instance['classname'] ) ) {
+            $classname = $instance['classname'];
         }
 
 
@@ -132,38 +132,49 @@ class SocialIcons_Widget extends WP_Widget
             "flickr",
             "behance"
         );
-        foreach ($social_icons as $sc) {
-            if (!isset($instance[$sc])) {
-                $instance[$sc] = "";
+        foreach ( $social_icons as $sc ) {
+            if ( ! isset( $instance[ $sc ] ) ) {
+                $instance[ $sc ] = "";
             }
         }
-    ?>
-        <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'philosophy'); ?></label>
-            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
-        </p>
-        <?php foreach ($social_icons as $sci) {
         ?>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'philosophy' ); ?></label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
+                   value="<?php echo esc_attr( $title ); ?>"/>
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'classname' ) ); ?>"><?php _e( 'CSS Class name:', 'philosophy' ); ?></label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'classname' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'classname' ) ); ?>" type="text"
+                   value="<?php echo esc_attr( $classname ); ?>"/>
+        </p>
+        <?php foreach ( $social_icons as $sci ) {
+            ?>
             <p>
-                <label for="<?php echo $this->get_field_id($sci); ?>"><?php echo esc_html(ucfirst($sci) . " " . __('URL', 'philosophy')); ?>
+                <label for="<?php echo esc_attr($this->get_field_id( $sci )) ; ?>"><?php echo esc_html( ucfirst( $sci ) . " " . __( 'URL', 'philosophy' ) ); ?>
                     : </label>
-                <br />
+                <br/>
 
-                <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id($sci)); ?>" name="<?php echo esc_attr($this->get_field_name($sci)); ?>" value="<?php echo esc_attr($instance[$sci]); ?>" />
+                <input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id( $sci ) ); ?>"
+                       name="<?php echo esc_attr( $this->get_field_name( $sci ) ); ?>"
+                       value="<?php echo esc_attr( $instance[ $sci ] ); ?>"/>
             </p>
 
-        <?php
+            <?php
         }
         ?>
 
 
-<?php
+        <?php
     }
+
+
 } // class Foo_Widget
 
-function social_icons_widget()
-{
-    register_widget('SocialIcons_Widget');
+function social_icons_widget() {
+    register_widget( 'SocialIcons_Widget' );
 }
 
-add_action('widgets_init', 'social_icons_widget');
+add_action( 'widgets_init', 'social_icons_widget' );
