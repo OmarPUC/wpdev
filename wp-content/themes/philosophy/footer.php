@@ -30,6 +30,7 @@
                     </article>
                 <?php
                 }
+                wp_reset_query();
                 ?>
             </div> <!-- end popular_posts -->
         </div> <!-- end popular -->
@@ -66,7 +67,7 @@
             </h3>
 
             <div class="tagcloud">
-                <?php _e(get_the_tag_list(), 'philosophy'); ?>
+                <?php echo get_the_tag_list(); ?>
             </div> <!-- end tagcloud -->
         </div> <!-- end tags -->
     </div> <!-- end tags-wrap -->
