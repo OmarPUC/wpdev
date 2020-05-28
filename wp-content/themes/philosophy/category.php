@@ -7,7 +7,7 @@
     <div class="row narrow">
         <div class="col-full s-content__header" data-aos="fade-up">
             <h1>
-                <?php _e('Category: ') . single_cat_title(); ?>
+                <?php _e('Category: ','philosophy') . single_cat_title(); ?>
             </h1>
 
             <p class="lead">

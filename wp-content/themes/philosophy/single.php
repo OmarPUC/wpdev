@@ -29,13 +29,16 @@ get_header();
 
         <div class="col-full s-content__main">
 
-            <?php the_content(); ?>
+            <?php
+            the_content();
+            wp_link_pages();
+            ?>
 
             <p class="s-content__tags">
                 <span><?php _e('Post Tags', 'philosophy'); ?></span>
 
                 <span class="s-content__tag-list">
-                    <?php _e(get_the_tag_list(), 'philosophy'); ?>
+                    <?php echo get_the_tag_list(); ?>
                 </span>
             </p> <!-- end s-content__tags -->
 
@@ -123,7 +126,7 @@ get_header();
                     <li class="depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img width="50" height="50" class="avatar" src="images/avatars/user-01.jpg" alt="">
+                            <img width="50" height="50" class="avatar" src="images/avatars/user-01.jpg" alt="avatar">
                         </div>
 
                         <div class="comment__content">
@@ -149,7 +152,7 @@ get_header();
                     <li class="thread-alt depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="">
+                            <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="avatar">
                         </div>
 
                         <div class="comment__content">
@@ -176,7 +179,7 @@ get_header();
                             <li class="depth-2 comment">
 
                                 <div class="comment__avatar">
-                                    <img width="50" height="50" class="avatar" src="images/avatars/user-03.jpg" alt="">
+                                    <img width="50" height="50" class="avatar" src="images/avatars/user-03.jpg" alt="avatar">
                                 </div>
 
                                 <div class="comment__content">
@@ -203,7 +206,7 @@ get_header();
                                     <li class="depth-3 comment">
 
                                         <div class="comment__avatar">
-                                            <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="">
+                                            <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="avatar">
                                         </div>
 
                                         <div class="comment__content">
@@ -237,7 +240,7 @@ get_header();
                     <li class="depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img width="50" height="50" class="avatar" src="images/avatars/user-02.jpg" alt="">
+                            <img width="50" height="50" class="avatar" src="images/avatars/user-02.jpg" alt="avatar">
                         </div>
 
                         <div class="comment__content">
