@@ -45,17 +45,23 @@
 
     </div> <!-- end row -->
 
-    <div class="row bottom tags-wrap">
-        <div class="col-full tags">
-            <h3>
-                <?php _e('Tags', 'philosophy'); ?>
-            </h3>
+    <?php
+    if (!is_page($page = 'about') && !is_page($page = 'contact')) {
+    ?>
+        <div class="row bottom tags-wrap">
+            <div class="col-full tags">
+                <h3>
+                    <?php _e('Tags', 'philosophy'); ?>
+                </h3>
 
-            <div class="tagcloud">
-                <?php echo get_the_tag_list(); ?>
-            </div> <!-- end tagcloud -->
-        </div> <!-- end tags -->
-    </div> <!-- end tags-wrap -->
+                <div class="tagcloud">
+                    <?php echo get_the_tag_list(); ?>
+                </div> <!-- end tagcloud -->
+            </div> <!-- end tags -->
+        </div> <!-- end tags-wrap -->
+    <?php
+    }
+    ?>
 
 </section> <!-- end s-extra -->
 
@@ -135,11 +141,11 @@
         <div class="row">
             <div class="col-full">
                 <div class="s-footer__copyright">
-                <?php
-                if (is_active_sidebar('footer-bottom')) {
-                    dynamic_sidebar('footer-bottom');
-                }
-                ?>
+                    <?php
+                    if (is_active_sidebar('footer-bottom')) {
+                        dynamic_sidebar('footer-bottom');
+                    }
+                    ?>
                 </div>
 
                 <div class="go-top">

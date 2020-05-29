@@ -106,7 +106,7 @@ if (!is_active_sidebar('sidebar-1')) {
                                                         while ($alpha_rp->have_posts()) {
                                                             $alpha_rp->the_post();
                                                         ?>
-                                                        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                                            <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                                                         <?php
                                                         }
                                                         wp_reset_query();
