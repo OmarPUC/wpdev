@@ -55,7 +55,13 @@
                 </h3>
 
                 <div class="tagcloud">
-                    <?php echo get_the_tag_list(); ?>
+                    <?php
+                    $tags = get_tags();
+                    if ($tags) :
+                        foreach ($tags as $tag) : ?>
+                            <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div> <!-- end tagcloud -->
             </div> <!-- end tags -->
         </div> <!-- end tags-wrap -->

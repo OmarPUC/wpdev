@@ -31,16 +31,16 @@
 
                 <div class="header__logo">
                     <?php
-                    if(has_custom_logo()){
+                    if (has_custom_logo()) {
                         the_custom_logo();
-                    }else{
-                        echo '<h1><a href="'.home_url('/').'">'.get_bloginfo('name').'</a></h1>';
+                    } else {
+                        echo '<h1><a href="' . home_url('/') . '">' . get_bloginfo('name') . '</a></h1>';
                     }
                     ?>
                 </div> <!-- end header__logo -->
 
                 <?php
-                if(is_active_sidebar('header-section')){
+                if (is_active_sidebar('header-section')) {
                     dynamic_sidebar('header-section');
                 }
                 ?>
@@ -49,9 +49,9 @@
 
                 <div class="header__search">
 
-                   <?php get_search_form(); ?>
+                    <?php get_search_form(); ?>
 
-                    <a href="#0" title="<?php _e('Close Search','philosophy'); ?>" class="header__overlay-close">
+                    <a href="#0" title="<?php _e('Close Search', 'philosophy'); ?>" class="header__overlay-close">
                         <?php _e('Close', 'philosophy'); ?>
                     </a>
 

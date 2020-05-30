@@ -3,6 +3,7 @@
    <!-- s-content
     ================================================== -->
    <section class="s-content">
+        
 
        <div class="row masonry-wrap">
            <div class="masonry">
