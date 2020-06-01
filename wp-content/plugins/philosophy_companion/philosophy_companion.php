@@ -15,14 +15,14 @@ function create_book_cpt()
 {
 
     $labels = array(
-        'name' => _x('books', 'Post Type General Name', 'philosophy'),
+        'name' => _x('Books', 'Post Type General Name', 'philosophy'),
         'singular_name' => _x('Book', 'Post Type Singular Name', 'philosophy'),
-        'menu_name' => _x('books', 'Admin Menu text', 'philosophy'),
+        'menu_name' => _x('Books', 'Admin Menu text', 'philosophy'),
         'name_admin_bar' => _x('Book', 'Add New on Toolbar', 'philosophy'),
         'archives' => __('Book Archives', 'philosophy'),
         'attributes' => __('Book Attributes', 'philosophy'),
         'parent_item_colon' => __('Parent Book:', 'philosophy'),
-        'all_items' => __('All books', 'philosophy'),
+        'all_items' => __('All Books', 'philosophy'),
         'add_new_item' => __('Add New Book', 'philosophy'),
         'add_new' => __('Add New', 'philosophy'),
         'new_item' => __('New Book', 'philosophy'),
