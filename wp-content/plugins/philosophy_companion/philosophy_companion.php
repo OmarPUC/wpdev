@@ -11,6 +11,9 @@
  */
 
 // Register Custom Post Type Book
+
+require_once dirname(__FILE__)."/gmap_ui.php";
+
 function create_book_cpt()
 {
 
