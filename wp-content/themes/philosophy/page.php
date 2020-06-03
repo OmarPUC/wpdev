@@ -33,25 +33,6 @@ get_header();
             the_content();
             wp_link_pages();
 
-            $philosophy_chargs = array(
-                'post_type' =>  'chapter',
-                'posts_per_page'    =>  -1,
-                'meta_key'  =>  'parent_book',
-                'meta_value'    =>  get_the_ID(),
-            );
-
-            $philosophy_chapters = new WP_Query($philosophy_chargs);
-            echo "<h3>";
-            _e('Chapters:', 'philosophy');
-            echo "</h3>";
-            $philosophy_cmb2_chapters = get_post_meta(get_the_ID(), 'attached_cmb2_attached_posts', true);
-            foreach ($philosophy_cmb2_chapters as $pch) {
-                $philosophy_chl = get_the_permalink($pch);
-                $philosophy_cht = get_the_title($pch);
-                printf("<a href='%s'>%s</a></br>", $philosophy_chl, $philosophy_cht);
-            }
-
-            wp_reset_query();
             ?>
 
             <p class="s-content__tags">
@@ -59,14 +40,6 @@ get_header();
 
                 <span class="s-content__tag-list">
                     <?php echo get_the_tag_list(); ?>
-                </span>
-            </p> <!-- end s-content__tags -->
-
-            <p class="s-content__tags">
-                <span><?php _e('Language', 'philosophy'); ?></span>
-
-                <span class="s-content__tag-list">
-                    <?php the_terms(get_the_ID(), 'language', '', '', ''); ?>
                 </span>
             </p> <!-- end s-content__tags -->
 
@@ -318,7 +291,7 @@ get_header();
                                 <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
                             </div>
 
-                            <button type="submit" class="submit btn--primary btn--large full-width"><?php _e('Submit','philosophy'); ?></button>
+                            <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>
 
                         </fieldset>
                     </form> <!-- end form -->

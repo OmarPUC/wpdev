@@ -26,14 +26,6 @@ get_header();
 
         <div class="col-full s-content__main">
 
-            <div>
-                <?php
-                if (is_active_sidebar('contact-maps')) {
-                    dynamic_sidebar('contact-maps');
-                }
-                ?>
-            </div>
-
             <?php the_content(); ?>
 
             <div class="row block-1-2 block-tab-full">
@@ -44,12 +36,13 @@ get_header();
                 ?>
             </div>
 
-            <h3><?php _e('Say Hello.','philosophy') ?></h3>
+            <h3><?php _e('Say Hello.', 'philosophy') ?></h3>
+
 
             <div>
                 <?php
-                if(get_field('contact_form_shortcode')){
-                   echo do_shortcode(get_field('contact_form_shortcode'));
+                if (get_field('contact_form_shortcode')) {
+                    echo do_shortcode(get_field('contact_form_shortcode'));
                 }
                 ?>
             </div>
@@ -62,4 +55,3 @@ get_header();
 
 
 <?php get_footer(); ?>
-
