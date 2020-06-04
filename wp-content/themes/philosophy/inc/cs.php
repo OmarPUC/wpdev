@@ -118,3 +118,41 @@ function philosophy_page_metabox($options)
     return $options;
 }
 add_filter('cs_metabox_options', 'philosophy_page_metabox');
+
+function philosophy_upload_metabox()
+{
+    $options[] = array(
+        'id'    =>  'page-upload-metabox',
+        'title' =>  __('Upload Image', 'philosophy'),
+        'post_type' =>  'page',
+        'context'   =>  'normal',
+        'priority'  =>  'default',
+        'sections'  =>  array(
+            array(
+                'name'  =>  'page-section1',
+                'icon'  =>  'fa fa-image',
+                'fields' =>  array(
+                    // array(
+                    //     'id'    =>  'page-upload',
+                    //     'type'  =>  'upload',
+                    //     'title' =>  __('Upload Image', 'philosophy'),
+                    //     'settings'  =>array(
+                    //         'upload_type'   =>  'image',
+                    //         'button_title'  =>  __('Upload', 'philosophy'),
+                    //         'frame_title'  =>  __('Select an image', 'philosophy'),
+                    //         'insert_title'  =>  __('Use this image', 'philosophy'),
+                    //     ),
+                    // ),
+                    array(
+                        'id'    =>  'page-image',
+                        'type'  =>  'image',
+                        'title' =>  __('Upload Image', 'philosophy'),
+                        'title' =>  __('Add an Image', 'philosophy'),
+                    ),
+                ),
+            ),
+        ),
+    );
+    return $options;
+}
+add_filter('cs_metabox_options', 'philosophy_upload_metabox');
