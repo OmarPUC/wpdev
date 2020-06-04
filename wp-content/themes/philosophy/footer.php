@@ -45,29 +45,23 @@
 
     </div> <!-- end row -->
 
-    <?php
-    if (!is_page($page = 'about') && !is_page($page = 'contact')) {
-    ?>
-        <div class="row bottom tags-wrap">
-            <div class="col-full tags">
-                <h3>
-                    <?php _e('Tags', 'philosophy'); ?>
-                </h3>
+    <div class="row bottom tags-wrap">
+        <div class="col-full tags">
+            <h3>
+                <?php _e('Tags', 'philosophy'); ?>
+            </h3>
 
-                <div class="tagcloud">
-                    <?php
-                    $tags = get_tags();
-                    if ($tags) :
-                        foreach ($tags as $tag) : ?>
-                            <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div> <!-- end tagcloud -->
-            </div> <!-- end tags -->
-        </div> <!-- end tags-wrap -->
-    <?php
-    }
-    ?>
+            <div class="tagcloud">
+                <?php
+                $tags = get_tags();
+                if ($tags) :
+                    foreach ($tags as $tag) : ?>
+                        <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div> <!-- end tagcloud -->
+        </div> <!-- end tags -->
+    </div> <!-- end tags-wrap -->
 
 </section> <!-- end s-extra -->
 

@@ -9,9 +9,19 @@ function philosophy_csf_metabox()
 {
     CSFramework_Metabox::instance(array());
 }
+add_action('init', 'philosophy_csf_metabox');
 
 function philosophy_page_metabox($options)
 {
+    $page_id = 0;
+    if (isset($_REQUEST['post']) || isset($_REQUEST['post_ID'])) {
+        $page_id = empty($_REQUEST['post_ID']) ? $_REQUEST['post'] : $_REQUEST['post_ID'];
+    }
+    $current_pgae_template = get_post_meta($page_id, '_wp_page_template', true);
+    if (!in_array($current_pgae_template, array('about.php', 'contact.php'))) {
+        return $options;
+    }
+
     $options[] = array(
         'id'    =>  'page-metabox',
         'title' =>  __('Page Meta Info', 'philosophy'),
