@@ -65,7 +65,41 @@ function philosophy_page_metabox($options)
                         'id'    =>  'is-favorite2',
                         'type'  =>  'switcher',
                         'title'   =>  __('Is Favorite?', 'philosophy'),
-                        'default'   =>  1
+                        'default'   =>  0
+                    ),
+                    array(
+                        'id'    =>  'is-favorite-extra',
+                        'type'  =>  'switcher',
+                        'title'   =>  __('Extra Check', 'philosophy'),
+                        'default'   =>  0,
+                        'dependency'   =>   array('is-favorite2', '==', '1'),
+                    ),
+                    array(
+                        'id'    =>  'page-heading1',
+                        'type'  =>  'text',
+                        'title' =>  __('Write Your Text', 'philosophy'),
+                        'default'   =>  __('write here', 'philosophy'),
+                        'dependency'   =>   array('is-favorite-extra', '==', '1'),
+                    ),
+                    array(
+                        'id'         => 'opt-checkbox',
+                        'type'       => 'checkbox',
+                        'title'      => 'Languages',
+                        'options'    => array(
+                            'option-1' => 'Bnagla',
+                            'option-2' => 'English',
+                            'option-3' => 'French',
+                        ),
+                        'attributes' => array(
+                            'data-depend-id'    =>  'opt-checkbox'
+                        ),
+                    ),
+                    array(
+                        'id'    =>  'page-heading2',
+                        'type'  =>  'text',
+                        'title' =>  __('Write Your Text', 'philosophy'),
+                        'default'   =>  __('write here', 'philosophy'),
+                        'dependency'   =>   array('opt-checkbox', 'any', 'option-1,option-3'),
                     ),
                 ),
             ),
