@@ -36,6 +36,15 @@ get_header();
             $philosophy_page_meta = get_post_meta(get_the_ID(), 'page-upload-metabox', true);
             echo wp_get_attachment_image($philosophy_page_meta['page-image'], 'medium');
 
+            echo $philosophy_page_meta['opt-gallery'];
+            if ($philosophy_page_meta['opt-gallery']) {
+                $philosophy_gallery_ids = explode(',', $philosophy_page_meta['opt-gallery']);
+                foreach ($philosophy_gallery_ids as $philosophy_gallery_id) {
+                    echo "</br>";
+                    echo wp_get_attachment_image($philosophy_gallery_id, 'medium');
+                }
+            }
+
             ?>
 
             <p class="s-content__tags">
