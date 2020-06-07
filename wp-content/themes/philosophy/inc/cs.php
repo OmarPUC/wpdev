@@ -2,12 +2,13 @@
 define('CS_ACTIVE_FRAMEWORK', false);
 define('CS_ACTIVE_METABOX', true);
 define('CS_ACTIVE_TAXONOMY', false);
-define('CS_ACTIVE_SHORTCODE', false);
+define('CS_ACTIVE_SHORTCODE', true);
 define('CS_ACTIVE_CUSTOMIZE', false);
 
 function philosophy_csf_metabox()
 {
     CSFramework_Metabox::instance(array());
+    CSFramework_Shortcode_Manager::instance(array());
 }
 add_action('init', 'philosophy_csf_metabox');
 
@@ -94,7 +95,7 @@ function philosophy_page_metabox($options)
                     array(
                         'id'         => 'opt-checkbox',
                         'type'       => 'checkbox',
-                        'title'      => 'Languages',
+                        'title'      => __('Languages', 'philosophy'),
                         'options'    => array(
                             'option-1' => 'Bnagla',
                             'option-2' => 'English',
@@ -119,7 +120,7 @@ function philosophy_page_metabox($options)
 }
 add_filter('cs_metabox_options', 'philosophy_page_metabox');
 
-function philosophy_upload_metabox()
+function philosophy_upload_metabox($options)
 {
     $options[] = array(
         'id'    =>  'page-upload-metabox',
@@ -156,7 +157,7 @@ function philosophy_upload_metabox()
                         'add_title'   => 'Add Images',
                         'edit_title'  => 'Edit Images',
                         'clear_title' => 'Remove Images',
-                      ),                      
+                    ),
                 ),
             ),
         ),
@@ -164,3 +165,49 @@ function philosophy_upload_metabox()
     return $options;
 }
 add_filter('cs_metabox_options', 'philosophy_upload_metabox');
+
+function philosophy_cs_google_map( $options ) {
+    $options[] = array(
+        'name'       => 'group_1',
+        'title'      => 'Group #1',
+        'shortcodes' => array(
+
+            array(
+                'name'   => 'gmap',
+                'title'  => 'Google Map',
+                'fields' => array(
+                    array(
+                        'id'      => 'place',
+                        'type'    => 'text',
+                        'title'   => 'Place',
+                        'help'    => 'Enter Place',
+                        'default' => 'Notre Dame College, Dhaka'
+                    ),
+                    array(
+                        'id'      => 'width',
+                        'type'    => 'text',
+                        'title'   => 'Width',
+                        'default' => '100%'
+                    ),
+                    array(
+                        'id'      => 'height',
+                        'type'    => 'text',
+                        'title'   => 'Height',
+                        'default' => 500
+                    ),
+                    array(
+                        'id'      => 'zoom',
+                        'type'    => 'text',
+                        'title'   => 'Zoom',
+                        'default' => 14,
+                    )
+                ),
+            ),
+
+        )
+    );
+
+    return $options;
+}
+
+add_filter( 'cs_shortcode_options', 'philosophy_cs_google_map' );
