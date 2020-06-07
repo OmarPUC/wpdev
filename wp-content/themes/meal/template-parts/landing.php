@@ -1,3 +1,9 @@
+<?php
+
+/**
+ * Template Name: Landing Page
+ */
+?>
 <?php get_header(); ?>
 
 <div class="main-wrap " id="section-home">
