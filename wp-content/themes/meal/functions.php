@@ -1,19 +1,27 @@
 <?php
+
+if (site_url() == "http://localhost/wpdesign/") {
+    define("VERSION", time());
+} else {
+    define("VERSION", wp_get_theme()->get("Version"));
+}
+
 function meal_theme_setup()
 {
     load_theme_textdomain('meal', get_template_directory() . "/languages");
     add_theme_support('post-thumbnails');
-    add_theme_support('custom-logo');
     add_theme_support('title-tags');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5', array(
         'search-form',
-        'comment-list',
         'comment-form',
         'gallery',
         'caption',
+        'comment-list'
     ));
+    add_theme_support('custom-logo');
 }
+
 add_action('after_setup_theme', 'meal_theme_setup');
 
 function meal_assets()
@@ -50,4 +58,5 @@ function meal_assets()
     wp_enqueue_script('meal-portfolio-js', get_template_directory_uri() . '/assets/js/portfolio.js', array('jquery', 'jquery-magnific-popup-js', 'imagesloaded-js', 'isotope-js'), VERSION, true);
     wp_enqueue_script('meal-main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), VERSION, true);
 }
+
 add_action('wp_enqueue_scripts', 'meal_assets');
